@@ -4,8 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "export PATH=node_modules/.bin:$PATH && node_modules/.bin/pulp build && webpack",
+    "start": "npm run build && node_modules/.bin/webpack-dev-server --content-base public/ --hot --inline"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "pulp": "^11.0.2",
+    "purescript": "^0.11.6"
+  }
 }
