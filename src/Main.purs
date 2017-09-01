@@ -14,6 +14,8 @@ type Angle    = Number
 type Position = { x   :: Number,   y      :: Number }
 type Circle   = { pos :: Position, radius :: Radius }
 
+foreign import colorScale :: Number -> Color
+
 -- dimensions of canvas
 width  = 600.0
 height = 600.0
@@ -51,7 +53,8 @@ main = do
   Just canvas <- getCanvasElementById "circle"
   ctx         <- getContext2D canvas
   _           <- drawCircle { pos: { x: 300.0, y: 300.0 }, radius: 250.0 } "#fff" ctx
-  foreachE angles \n -> void do
-    let pos = angToPos n
-    let cir = { pos: pos, radius: 20.0 }
-    drawCircle cir "black" ctx
+  foreachE angles \angle -> void do
+    let pos   = angToPos angle
+    let cir   = { pos: pos, radius: 20.0 }
+    let color = colorScale $ (angle / (Math.pi * 2.0) * 100.0)
+    drawCircle cir color ctx
