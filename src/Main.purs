@@ -31,7 +31,9 @@ circlePositions =
   , 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0,  23.0, 24.0]
 
 angToPos :: Angle -> Position
-angToPos ang = {x: ((Math.cos ang) * radius) + 300.0, y: ((Math.sin ang) * radius) + 300.0}
+angToPos ang = { x: ((Math.cos ang) * radius) + 300.0
+               , y: ((Math.sin ang) * radius) + 300.0
+               }
 
 -- space between circles along circle
 space :: Number
